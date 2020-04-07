@@ -32,6 +32,10 @@ class NumMatrix {
         int m   = matrix.length;
         int n   = matrix[0].length;
         colSums = new int[m + 1][n];
+
+        // colSums row 0 is all 0, colSums row 1 equal to matrix row 0 [sum of all zero's for colSums row 0  and matrix row 0]
+        // colSums row 2 has sum of matrix row 0 and matrix row 1
+        // colSums row 3 has sum of matrix row 0 and matrix row 1 and matrix row 2
         for(int i = 1; i <= m; i++){
             for(int j = 0; j < n; j++){
                 colSums[i][j] = colSums[i - 1][j] + matrix[i - 1][j];
@@ -53,6 +57,7 @@ class NumMatrix {
         int ret = 0;
 
         for(int j = col1; j <= col2; j++){
+            //colSums row 5 is sum of [first 4], so that minus colSums row 2 [sum of matrix row 1 and 0 ] == sum of row 2,3,4
             ret += colSums[row2 + 1][j] - colSums[row1][j];
         }
 
