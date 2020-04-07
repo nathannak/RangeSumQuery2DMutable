@@ -46,6 +46,7 @@ class NumMatrix {
     //time complexity for the worst case scenario: O(m)
     public void update(int row, int col, int val) {
         for(int i = row + 1; i < colSums.length; i++){
+            //remove current value and add new one
             colSums[i][col] = colSums[i][col] - matrix[row][col] + val;
         }
 
